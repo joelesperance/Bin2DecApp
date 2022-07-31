@@ -1,33 +1,45 @@
-﻿Console.WriteLine("--------BINARY TO DECIMAL CONVERTER--------\n");
-Console.Write("Enter a Binary Number: ");
-string binary = Console.ReadLine();
+﻿Console.WriteLine("--------BINARY TO DECIMAL CONVERTER--------");
+Console.WriteLine("------------[Type quit to exit]------------\n");
+string binary = "";
 
-int decimalNum = 0;
-bool binaryIsValid = false;
-
-foreach (char i in binary)
+while (binary.ToLower() != "quit")
 {
-    if (i == '0' || i == '1')
-    { 
-        binaryIsValid = true; 
+    Console.Write("Enter a Binary Number: ");
+    binary = Console.ReadLine();
+
+    int decimalNum = 0;
+    bool binaryIsValid = false;
+
+    foreach (char i in binary)
+    {
+        if (i == '0' || i == '1')
+        {
+            binaryIsValid = true;
+        }
+        else
+        {
+            binaryIsValid = false;
+            break;
+        }
+    }
+
+    if (binaryIsValid)
+    {
+        foreach (char i in binary)
+        {
+            decimalNum = decimalNum * 2 + (i - 48);
+        }
+        Console.WriteLine($"\nDecimal: {decimalNum}\n");
+    }
+    else if (binary == "quit")
+    {
+        Console.WriteLine("\nGoodbye!\n");
     }
     else
     {
-        binaryIsValid = false;
-        break;
+        Console.WriteLine("\nInvalid input\n");
     }
 }
 
-if (binaryIsValid)
-{
-    foreach (char i in binary)
-    {
-        decimalNum = decimalNum * 2 + (i - 48);
-    }
-    Console.WriteLine($"\nDecimal: {decimalNum}\n");
-}
-else
-{
-    Console.WriteLine("\nInvalid input\n");
-}
+
 
